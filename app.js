@@ -16,7 +16,7 @@ var index     = require('./routes/index');
 var userRoutes= require('./routes/user');
 var app       = express();
 
-mongoose.connect('ds111718.mlab.com:11718/heroku_qxhvcz1t');
+mongoose.connect('mongodb://admin:password@ds111718.mlab.com:11718/heroku_qxhvcz1t');
 require('./config/passport');
 
 // view engine setup
