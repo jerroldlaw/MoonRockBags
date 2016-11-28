@@ -1,0 +1,85 @@
+<div class="register">
+	<div class="container">
+		<h2>Sign Up</h2>
+		{{#if hasErrors}}
+			<div class="alert alert-danger">
+				{{#each messages}}
+					<p>{{this}}</p>
+				{{/each}}
+			</div>
+		{{/if}}
+		<form action="/user/signup" method="post">
+				<div class="col-md-6  register-top-grid">
+					<div class="mation">
+					<span>First Name</span>
+					<input type="text" name="firstname"> 
+
+					<span>Last Name</span>
+					<input type="text" name="lastname"> 
+
+					<span>Email Address</span>
+					<input type="text" name="email" id="email" class="form-control">
+					</div>
+					<div class="clearfix">
+				</div>
+				<a class="news-letter" href="#">
+				<!-- <label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i> </i>Sign Up</label> -->
+				</a>
+				</div>
+				<div class=" col-md-6 register-bottom-grid">
+					<div class="mation">
+						<span>Password</span>
+						<input type="password" name="password" id="password" class="form-control">
+						<span>Confirm Password</span>
+						<input type="password" name="password-cfm" id="password-cfm" class="form-control">
+					</div>
+				</div>
+				<div class="clearfix"> </div>
+				<div class="col-md-12  register-top-grid">
+					<h1>Your Kids (Max 4)</h1>
+					<div class="mation clearfix">
+						<div class="col-md-5">
+							<span>Name</span>
+							<input type="text" name="kid1-name"> 
+						</div>
+						<div class="col-md-5">
+							<span>Birthday</span>
+							<input type="text" name="kid1-birthday" placeholder="mm/dd/yy" data-date-format="mm/dd/yy" id="dp">
+						</div>
+						<div class="col-md-5">
+							<span>Name</span>
+							<input type="text" name="kid2-name"> 
+						</div>
+						<div class="col-md-5">
+							<span>Birthday</span>
+							<input type="text" name="kid2-birthday">
+						</div>
+						<div class="col-md-5">
+							<span>Name</span>
+							<input type="text" name="kid3-name"> 
+						</div>
+						<div class="col-md-5">
+							<span>Birthday</span>
+							<input type="text" name="kid3-birthday">
+						</div>
+						<div class="col-md-5">
+							<span>Name</span>
+							<input type="text" name="kid4-name"> 
+						</div>
+						<div class="col-md-5">
+							<span>Birthday</span>
+							<input type="text" name="kid4-birthday">
+						</div>
+					</div>
+				</div>
+				<div class="col-md-6  register-top-grid">
+					<button type="submit" class="btn btn-primary">Sign Up</button>
+				</div>
+			<input type="hidden" name="_csrf" value = "{{ csrfToken }}">
+		</form>
+	</div>
+</div>
+<script src="/javascripts/bootstrap-datepicker.js"> </script>
+<script type="text/javascript">
+	$('#dp').datepicker()
+</script>
