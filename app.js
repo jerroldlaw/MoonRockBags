@@ -1,22 +1,22 @@
-var express     = require('express');
-var path        = require('path');
-var favicon     = require('serve-favicon');
-var logger      = require('morgan');
-var cookieParser= require('cookie-parser');
-var bodyParser  = require('body-parser');
-var expressHbs  = require('express-handlebars');
-var mongoose    = require('mongoose');
-var session 	= require('express-session');
-var passport	= require('passport');
-var flash 		= require('connect-flash');
-var validator 	= require('express-validator');
-var MongoStore 	= require('connect-mongo')(session);
+var express      = require('express');
+var multer       = require('multer');
+var path         = require('path');
+var favicon      = require('serve-favicon');
+var logger       = require('morgan');
+var cookieParser = require('cookie-parser');
+var bodyParser   = require('body-parser');
+var expressHbs   = require('express-handlebars');
+var mongoose     = require('mongoose');
+var session      = require('express-session');
+var passport     = require('passport');
+var flash        = require('connect-flash');
+var validator    = require('express-validator');
+var MongoStore   = require('connect-mongo')(session);
+var index        = require('./routes/index');
+var userRoutes   = require('./routes/user');
+var app          = express();
 
-var index     = require('./routes/index');
-var userRoutes= require('./routes/user');
-var app       = express();
-
-mongoose.connect('mongodb://admin:password@ds111718.mlab.com:11718/heroku_qxhvcz1t');
+mongoose.connect('localhost:27017/shopping');
 require('./config/passport');
 
 // view engine setup
