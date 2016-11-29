@@ -12,10 +12,10 @@
 				<div class="col-md-6  register-top-grid">
 					<div class="mation">
 					<span>First Name</span>
-					<input type="text" name="firstname"> 
+					<input type="text" class="form-control" name="firstname"> 
 
 					<span>Last Name</span>
-					<input type="text" name="lastname"> 
+					<input type="text" class="form-control" name="lastname"> 
 
 					<span>Email Address</span>
 					<input type="text" name="email" id="email" class="form-control">
@@ -40,35 +40,63 @@
 					<div class="mation clearfix">
 						<div class="col-md-5">
 							<span>Name</span>
-							<input type="text" name="kid1-name"> 
+							<input type="text" class="form-control" name="kid1-name"> 
 						</div>
 						<div class="col-md-5">
 							<span>Birthday</span>
-							<input type="text" name="kid1-birthday" placeholder="mm/dd/yy" data-date-format="mm/dd/yy" id="dp">
+				            <div class="form-group">
+				                <div class='input-group date' id='dp'>
+				                    <input type='text' class="form-control" placeholder="dd/mm/yy" name="kid1-birthday" />
+				                    <span class="input-group-addon">
+				                        <span class="glyphicon glyphicon-calendar"></span>
+				                    </span>
+				                </div>
+				            </div>
 						</div>
 						<div class="col-md-5">
 							<span>Name</span>
-							<input type="text" name="kid2-name"> 
+							<input type="text" class="form-control" name="kid2-name"> 
 						</div>
 						<div class="col-md-5">
 							<span>Birthday</span>
-							<input type="text" name="kid2-birthday">
+				            <div class="form-group">
+				                <div class='input-group date' id='dp'>
+				                    <input type='text' class="form-control" placeholder="dd/mm/yy" name="kid1-birthday" />
+				                    <span class="input-group-addon">
+				                        <span class="glyphicon glyphicon-calendar"></span>
+				                    </span>
+				                </div>
+				            </div>
 						</div>
 						<div class="col-md-5">
 							<span>Name</span>
-							<input type="text" name="kid3-name"> 
+							<input type="text" class="form-control" name="kid3-name"> 
 						</div>
 						<div class="col-md-5">
 							<span>Birthday</span>
-							<input type="text" name="kid3-birthday">
+				            <div class="form-group">
+				                <div class='input-group date' id='dp'>
+				                    <input type='text' class="form-control" placeholder="dd/mm/yy" name="kid1-birthday" />
+				                    <span class="input-group-addon">
+				                        <span class="glyphicon glyphicon-calendar"></span>
+				                    </span>
+				                </div>
+				            </div>
 						</div>
 						<div class="col-md-5">
 							<span>Name</span>
-							<input type="text" name="kid4-name"> 
+							<input type="text" class="form-control" name="kid4-name"> 
 						</div>
 						<div class="col-md-5">
 							<span>Birthday</span>
-							<input type="text" name="kid4-birthday">
+				            <div class="form-group">
+				                <div class='input-group date' id='dp'>
+				                    <input type='text' class="form-control" placeholder="dd/mm/yy" name="kid1-birthday" />
+				                    <span class="input-group-addon">
+				                        <span class="glyphicon glyphicon-calendar"></span>
+				                    </span>
+				                </div>
+				            </div>
 						</div>
 					</div>
 				</div>
@@ -79,7 +107,11 @@
 		</form>
 	</div>
 </div>
-<script src="/javascripts/bootstrap-datepicker.js"> </script>
+<script src="/javascripts/moment.js"> </script>
+<script src="/javascripts/bootstrap-datetimepicker.min.js"> </script>
 <script type="text/javascript">
-	$('#dp').datepicker()
+	$('#dp').datetimepicker({
+		viewMode: 'years',
+		format: 'DD/MM/YY'
+	});
 </script>

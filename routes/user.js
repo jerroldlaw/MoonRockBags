@@ -1,13 +1,16 @@
-var express = require('express');
-var router = express.Router();
-var csrf = require('csurf');
-var passport = require('passport');
+var express     = require('express');
+var router      = express.Router();
+var multer      = require('multer');
+var csrf        = require('csurf');
+var passport    = require('passport');
+var fs          = require('fs');
 
 var Maintenance = require('../models/maintenance');
-var Product = require('../models/product');
-var Order = require('../models/order');
-var Cart = require('../models/cart');
+var Product     = require('../models/product');
+var Order       = require('../models/order');
+var Cart        = require('../models/cart');
 
+var upload = multer({ dest: 'maintenance/' })
 var csrfProtection = csrf();
 router.use(csrfProtection);
 
@@ -32,17 +35,33 @@ router.get('/maintenance', isLoggedIn, function(req, res, next){
     });
 });
 
-router.post('/maintenance', isLoggedIn, function(req, res, next){
-	var maintenance = new Maintenance({
-		user     : req.user,
-		product  : req.body.product,
-		dop      : req.body.dop,
-		imagepath: req.body.image
+router.post('/maintenance', isLoggedIn, upload.single('imagefile'), function(req, res, next){
+	console.log(req.file);
+	fs.readFile(req.file.path, function (err, data) {
+		var dir = "./maintenance/" + req.user.id
+		if (!fs.existsSync(dir)){
+			fs.mkdirSync(dir);
+		}
+		var newPath = dir + "/" + Date.now() + ".jpg";
+		fs.writeFile(newPath, data, function (err) {
+			if (err){
+				console.log(err);
+			}
+			fs.unlink(req.file.path);
+			var maintenance = new Maintenance({
+				user     : req.user,
+				product  : req.body.product,
+				dop      : req.body.dop,
+				imagepath: newPath
+			});
+			maintenance.save(function(err, result){
+				req.flash('success', 'Maintenance was submitted!');
+				res.redirect('/');
+			});
+		});
 	});
-	maintenance.save(function(err, result){
-		req.flash('success', 'Maintenance was submitted!');
-		res.redirect('/');
-	});
+
+
 })
 
 router.get('/logout', isLoggedIn, function(req, res, next){

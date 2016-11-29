@@ -917,24 +917,14 @@ ul.social {
 	color: black;
 	font-size: 0.9em;
 	padding-bottom: 0.2em;
-	display: block;
 }
 .register-top-grid input[type="text"], .register-bottom-grid input[type="password"] {
-	border: 1px solid;
 	outline-color:#fa03bb;
 	width: 100%;
 	font-size: 1em;
 	padding: 0.5em;
-	margin: 0.5em 0;
 }
-.register-bottom-grid input[type="password"] {
-	border: 1px solid;
-	outline-color:#fa03bb;
-	width: 100%;
-	font-size: 1em;
-	padding: 0.5em;
-	margin: 0.5em 0;
-}
+
 .checkbox {
 	margin-bottom: 4px;
 	padding-left: 27px;
@@ -1252,7 +1242,6 @@ th, td {
 	padding: 10px;
 }
 td{
-	color:#b2b2b2;
 	font-size: 1em;
 }
 a.at-in {

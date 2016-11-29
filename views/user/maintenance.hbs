@@ -1,29 +1,54 @@
 <div class="account">
 	<div class="container">
 		<h2>Maintenance</h2>
-		<form action="/user/maintenance" method="post">
+		<form action="/user/maintenance?_csrf={{csrfToken}}" method="post" enctype="multipart/form-data">
 			<div class="mation clearfix">
 				<div class="col-md-12">
-					<span>Product</span>
-					<select name="product">
-						{{#each products}}
-							<option value="{{this.id}}">
-								{{this.title}}
-							</option>
-				  		{{/each}}
-			  		</select>
+					<div class="col-md-6 form-group">
+						<span>Product</span>
+						<select name="product">
+							{{#each products}}
+								<option value="{{this.id}}">
+									{{this.title}}
+								</option>
+					  		{{/each}}
+				  		</select>
+				  	</div>
 				</div>
 				<div class="col-md-12">
-					<span>Purchase Date</span>
-					<input type="text" name="dop"> 
+		            <div class="col-md-6 form-group">
+		            	<span>Purchase Date</span>
+		                <div class='input-group date' id='dp'>
+		                    <input type='text' class="form-control" placeholder="dd/mm/yy" name="dop" />
+		                    <span class="input-group-addon">
+		                        <span class="glyphicon glyphicon-calendar"></span>
+		                    </span>
+		                </div>
+		            </div>
+				</div>
+				<br>
+				<div class="col-md-12">
+					<div class="col-md-6 form-group">
+						<span>Upload Image</span>
+			            <div class="form-group">
+						    <input type="file" name="imagefile" id="imagefile">
+			            </div>
+			        </div>
 				</div>
 				<div class="col-md-12">
-					<span>Upload Image</span>
-					<input type="text" name="image"> 
+					<div class="col-md-6 form-group">
+						<input type="submit" class="btn btn-success" value="Submit">
+			        </div>
 				</div>
-				<input type="hidden" name="_csrf" value = "{{ csrfToken }}"> 
-				<input type="submit" value="Submit">
 			</div>
 		</div>
 	</form>
 </div>
+<script src="/javascripts/moment.js"> </script>
+<script src="/javascripts/bootstrap-datetimepicker.min.js"> </script>
+<script type="text/javascript">
+	$('#dp').datetimepicker({
+		viewMode: 'years',
+		format: 'DD/MM/YY'
+	});
+</script>

@@ -21,6 +21,7 @@
     "mongo-express": "^0.32.0",
     "mongoose": "^4.6.6",
     "morgan": "~1.7.0",
+    "multer": "^1.2.0",
     "passport": "^0.3.2",
     "passport-local": "^1.0.0",
     "serve-favicon": "~2.3.0",
